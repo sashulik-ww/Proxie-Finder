@@ -1,5 +1,5 @@
 # VLESS Reality + RU-SNI (белый список)
-# Сгенерировано: 2026-10-25T09:58:31.703390
+# Сгенерировано: 2026-10-25T09:59:33.872342
 # Всего: 24
 
 vless://fd0a5c32-afc0-4d57-b95a-ca6ec8f93e87@45.128.78.196:443?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=ozon.ru&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&fp=ios#🇩🇪 Germany | [SNI-RU] ozon.ru
