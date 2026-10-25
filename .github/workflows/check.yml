@@ -2,9 +2,9 @@ name: VLESS Reality RU-SNI Checker
 
 on:
   schedule:
-    # Каждый 4 часа
-    - cron: '0 */4 * * *'
-  workflow_dispatch:   # Можно запускать вручную
+    # Каждые 6 часов
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
   push:
     branches: [ main, master ]
     paths:
@@ -13,12 +13,12 @@ on:
       - '.github/workflows/check.yml'
 
 permissions:
-  contents: write   # Нужно, если хотим коммитить результат
+  contents: write
 
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 45          # ← увеличено (раньше было 15-25)
 
     steps:
       - name: Checkout repository
@@ -43,6 +43,8 @@ jobs:
         run: |
           echo "=== Результат ==="
           wc -l vless_reality_ru_sni.txt || true
+          echo ""
+          echo "=== Первые 15 серверов ==="
           head -n 20 vless_reality_ru_sni.txt || true
 
       - name: Upload artifact
@@ -52,7 +54,6 @@ jobs:
           path: vless_reality_ru_sni.txt
           retention-days: 7
 
-      # ===== Опционально: автоматически коммитить обновлённый файл =====
       - name: Commit and push updated configs
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
